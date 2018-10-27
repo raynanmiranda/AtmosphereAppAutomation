@@ -6,11 +6,11 @@
 
 Using the tools below:
 
-Selenium
-Appium
-App Client Product
-Android Mobile
-Junit
-Maven
-Cucumber
-Eclipse / IntelliJ
+- Selenium
+- Appium
+- App Client Product
+- Android Mobile
+- Junit
+- Maven
+- Cucumber
+- Eclipse / IntelliJ
