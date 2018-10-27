@@ -9,7 +9,7 @@ Using the tools below:
 - Selenium
 - Appium
 - App Client Product
-- Android Mobile
+- Android Mobile Device
 - Junit
 - Maven
 - Cucumber
