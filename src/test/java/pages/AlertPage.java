@@ -59,7 +59,7 @@ public class AlertPage extends PageBase {
 	public MobileElement validateDurationAlert;
 	
 	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/snackbar_text")
-	public MobileElement validateMessageWeekDays;
+	public MobileElement validateMessageSnackBar;
 	
 	@AndroidFindBy(id = "android:id/button1")
 	public MobileElement btnSaveAlert;

@@ -197,9 +197,17 @@ public class AlertSteps extends AlertPage {
 		assertTrue(validateFrameAddAlert.isDisplayed());
 	}
 
-	@Then("^Will show the message$")
-	public void will_show_the_message() {
-	    assertEquals("Please select weekdays", validateMessageWeekDays.getText());
+	@Then("^Will show the Weekday message$")
+	public void will_show_the_weekday_message() {
+	    assertEquals("Please select weekdays", validateMessageSnackBar.getText());
+	}
+	
+	
+	//------------------- Validate Message Create Alert Without Duration  ------------------
+	
+	@Then("^Will show the Duration message$")
+	public void will_show_the_duration_message() {
+	    assertEquals("Please define a duration", validateMessageSnackBar.getText());
 	}
 	
 	
