@@ -73,7 +73,7 @@ public class AlertSteps extends AlertPage {
 	}
 
 	@And("^Will click on OK$")
-	public void And_click_on_OK() {
+	public void will_click_on_OK() {
 
 		clickBtnOkSetClock();
 	}
@@ -170,5 +170,37 @@ public class AlertSteps extends AlertPage {
 		assertEquals(durationAlert, validateDurationAlert.getText());
 	}
 
+	
+	// ----------- Select Any weekDay ------------------------
+	
+	@When("^I select any Weekday$")
+	public void i_select_any_Weekday() throws Throwable {
+	    clickCheckWeekDays();
+	}
+
+	@Then("^Will be selected on the alert$")
+	public void will_be_selected_on_the_alert() throws Throwable {
+	    
+	}
+
+	//------------------- Validate Message Create Alert Without weekDay ------------------
+	
+	@And("^Will click on Save$")
+	public void will_click_on_save() {
+
+		clickBtnSaveAlert();
+	}
+	
+	@Then("^Will not create alert$")
+	public void will_not_create_alert(){
+	    
+		assertTrue(validateFrameAddAlert.isDisplayed());
+	}
+
+	@Then("^Will show the message$")
+	public void will_show_the_message() {
+	    assertEquals("Please select weekdays", validateMessageWeekDays.getText());
+	}
+	
 	
 }
