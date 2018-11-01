@@ -162,6 +162,7 @@ public class AlertSteps extends AlertPage {
 		selectDurationAlertHour();
 		selectDurationAlertMinute();
 		clickBtnOkSetClock();
+		
 	}
 
 	@Then("^Will update on the Duration description$")
@@ -210,5 +211,13 @@ public class AlertSteps extends AlertPage {
 	    assertEquals("Please define a duration", validateMessageSnackBar.getText());
 	}
 	
+	
+	//------------------- Validate  Create Alert With success  ------------------
+	
+	@Then("^Will create alert sucessfuly$")
+	public void will_create_alert_sucessfuly() {
+		
+		validateAlertCreated();
+	}
 	
 }

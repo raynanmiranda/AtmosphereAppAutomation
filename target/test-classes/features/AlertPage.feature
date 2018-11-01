@@ -83,24 +83,27 @@ Given I connected on wi-fi atmosphere already
 #Then Will not create alert
 #And  Will show the Weekday message
 
-Scenario: Create alert without Duration
+#Scenario: Create alert without Duration
+#
+#And  I click on the icon on the botton
+#When Click on the Set Time
+#And  Select the hour and minute
+#And  Will click on OK
+#And  I select any Weekday
+#And  Will click on Save
+#Then Will not create alert
+#And  Will show the Duration message
 
-And  I click on the icon on the botton
+Scenario: Salve alert sucessfuly
+
+And I click on the icon on the botton
 When Click on the Set Time
 And  Select the hour and minute
 And  Will click on OK
+And  Click on the Set Duration
+And  Select the hour and minute of Duration
+And  Will click on OK
 And  I select any Weekday
 And  Will click on Save
-Then Will not create alert
-And  Will show the Duration message
+Then Will create alert sucessfuly
 
-#Scenario: Salve alert sucessfuly
-#
-#And I click on the icon on the botton
-#When Click on the Set Time
-#And  Select the hour and minute
-#And  Select the hour and minute of Duration
-#And  I select any Weekday
-#And  Will click on OK
-#Then Will create alert sucessfuly
-#

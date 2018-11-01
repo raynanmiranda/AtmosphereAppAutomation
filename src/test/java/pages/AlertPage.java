@@ -20,6 +20,7 @@ public class AlertPage extends PageBase {
 	protected String getMinuteTime = null;
 	protected String getHourDuration = null;
 	protected String getMinuteDuration = null;
+	protected String weekDayName = null;
 	protected int weekRandom;
 
 	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/fab")
@@ -64,6 +65,10 @@ public class AlertPage extends PageBase {
 	@AndroidFindBy(id = "android:id/button1")
 	public MobileElement btnSaveAlert;
 	
+	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/title_text_view")
+	public MobileElement validateAlertCreated;
+	
+	
 
 	public void clickIconAddAlert() {
 
@@ -89,7 +94,7 @@ public class AlertPage extends PageBase {
 		sizeWeek = checkWeekDays.size();
 		weekRandom = number.nextInt(sizeWeek);
 		checkWeekDays.get(weekRandom).click();
-
+		//weekDayName = checkWeekDays.get(weekRandom).getText();
 		
 	}
 
@@ -174,4 +179,57 @@ public class AlertPage extends PageBase {
 		btnSaveAlert.click();
 	}
 
+	public void validateAlertCreated() {
+		
+		String resultAlert,ExpectedResultAlert;
+		
+		timeAlert = getHourTime + ":" + getMinuteTime;
+		durationAlert = getHourDuration + ":" + getMinuteDuration;
+		resultAlert = validateAlertCreated.getText();
+		translateWeekDay();
+		ExpectedResultAlert = ("1 - "+ timeAlert+" - "+ durationAlert +" - "+ weekDayName);
+		System.out.println(ExpectedResultAlert);
+		
+		assertEquals(ExpectedResultAlert, resultAlert);
+		
+		
+	}
+	
+public void translateWeekDay() {
+		weekRandom = weekRandom -1;
+		switch(weekRandom) {
+			
+			case 0:
+				weekDayName = "Seg ";
+			break;
+			
+			case 1:
+				weekDayName = "Ter ";
+			break;
+
+			case 2:
+				weekDayName = "qua ";
+			break;
+			
+			case 3:
+				weekDayName = "qui ";
+			break;
+			
+			case 4:
+				weekDayName = "sex ";
+			break;
+			
+			case 5:
+				weekDayName = "sáb ";
+			break;
+			
+			case 6:
+				weekDayName = "dom ";
+			break;
+			
+			default:
+				break;
+		}
+	}
+	
 }
