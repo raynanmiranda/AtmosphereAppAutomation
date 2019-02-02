@@ -15,17 +15,10 @@ public class AccessWifiSteps extends AccessWifiPage {
 	@Given("^I open the App$")
 	public void i_open_the_app() {
 		
-		clickUseAppWithouNFC();
+		clickUseAppWithouLocation("NO");
 		
 	}
 	
-	@And("^Access the menu 'Alert'$")
-	public void access_the_menu_alert() {
-		
-		clickCentralMenu();
-		clickSubMenuAlert();
-		
-	}
 	
 	@When("^Click on Scan$")
 	public void click_on_scan() {
@@ -35,29 +28,10 @@ public class AccessWifiSteps extends AccessWifiPage {
 	@Then("^Will be able to find wi-fi connection$")
 	public void will_be_able_to_find_wi_fi_connection() {
 		
-		assertEquals("net empresa 136", wifiAtmosphereDevice.getText());
+		assertEquals("AtmospheraCEF9", wifiAtmosphereDevice.getText());
 	}
 	
 	
-	//------------ Validate Right menu without Connection ------
-	
-	@When("^I Click on right menu$")
-	public void i_Click_on_right_menu(){
-	    clickOnRightMenu();
-	}
-
-	@When("^click on (.*)$")
-	public void click_on_AddAlerts(String option){
-	    clickOnRightSubMenuOption(option);
-		
-	}
-
-	@Then("^Will not change$")
-	public void will_not_change() {
-	    
-		assertTrue(btnScan.isDisplayed());
-		
-	}
 
 
 	//------- Connection with atmosphere component
@@ -71,7 +45,7 @@ public class AccessWifiSteps extends AccessWifiPage {
 	public void i_will_be_start_to_have_conection_with_the_component() {
 	    
 		clickBtnRefreshDevice();
-		assertEquals("net empresa 136", verifyAtmosphereConnected.getText());
+		assertEquals("AtmospheraCEF9", verifyAtmosphereConnected.getText());
 	}
 
 	

@@ -23,16 +23,16 @@ public class AlertPage extends PageBase {
 	protected String weekDayName = null;
 	protected int weekRandom;
 
-	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/fab")
+	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/fab")
 	public MobileElement iconAddAlert;
 
 	@AndroidFindBy(className = "android.widget.FrameLayout")
 	public MobileElement validateFrameAddAlert;
 
-	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/buttonSetTime")
+	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/buttonSetTime")
 	public MobileElement btnSetTime;
 
-	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/buttonSetDuration")
+	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/buttonSetDuration")
 	public MobileElement btnSetDuration;
 
 	@AndroidFindBy(className = "android.widget.CheckBox")
@@ -53,19 +53,19 @@ public class AlertPage extends PageBase {
 	@AndroidFindBy(id = "android:id/button2")
 	public MobileElement btnCancelSetTime;
 
-	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/textViewTime")
+	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/textViewTime")
 	public MobileElement validateTimeAlert;
 
-	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/textViewDuration")
+	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/textViewDuration")
 	public MobileElement validateDurationAlert;
 	
-	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/snackbar_text")
+	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/snackbar_text")
 	public MobileElement validateMessageSnackBar;
 	
 	@AndroidFindBy(id = "android:id/button1")
 	public MobileElement btnSaveAlert;
 	
-	@AndroidFindBy(id = "net.unitecgroup.www.unitecrfid:id/title_text_view")
+	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/title_text_view")
 	public MobileElement validateAlertCreated;
 	
 	

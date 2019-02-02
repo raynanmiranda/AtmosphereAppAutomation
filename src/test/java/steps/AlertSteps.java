@@ -22,9 +22,7 @@ public class AlertSteps extends AlertPage {
 
 	@Given("^I connected on wi-fi atmosphere already$")
 	public void i_connected_on_wi_fi_atmosphere_already() {
-		Ac.clickUseAppWithouNFC();
-		Ac.clickCentralMenu();
-		Ac.clickSubMenuAlert();
+		Ac.clickUseAppWithouLocation("NO");
 		Ac.clickWifiAtmosphereDevice();
 
 	}
@@ -39,7 +37,7 @@ public class AlertSteps extends AlertPage {
 	@Then("^I will see the name of device Connected$")
 	public void i_will_see_the_name_of_device_Connected() {
 
-		assertEquals("net empresa 136", Ac.verifyAtmosphereConnected.getText());
+		assertEquals("AtmospheraCEF9", Ac.verifyAtmosphereConnected.getText());
 	}
 
 	// ------------- Identify Icon Alert -------------------
@@ -200,7 +198,7 @@ public class AlertSteps extends AlertPage {
 
 	@Then("^Will show the Weekday message$")
 	public void will_show_the_weekday_message() {
-	    assertEquals("Please select weekdays", validateMessageSnackBar.getText());
+	    assertEquals("Por favor selecione os dias da semana", validateMessageSnackBar.getText());
 	}
 	
 	
@@ -208,7 +206,7 @@ public class AlertSteps extends AlertPage {
 	
 	@Then("^Will show the Duration message$")
 	public void will_show_the_duration_message() {
-	    assertEquals("Please define a duration", validateMessageSnackBar.getText());
+	    assertEquals("Por favor defina uma duração", validateMessageSnackBar.getText());
 	}
 	
 	
