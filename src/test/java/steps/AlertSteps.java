@@ -11,13 +11,15 @@ import cucumber.api.java.en.When;
 import pages.AlertPage;
 import pages.AccessWifiPage;
 
-public class AlertSteps extends AlertPage {
+public class AlertSteps {
 
 	AccessWifiPage Ac = null;
+	AlertPage alertPage = null;
 
 	public AlertSteps() {
 
 		Ac = new AccessWifiPage();
+		alertPage = new AlertPage();
 	}
 
 	@Given("^I connected on wi-fi atmosphere already$")
@@ -46,40 +48,40 @@ public class AlertSteps extends AlertPage {
 	public void i_click_on_the_icon_on_the_botton() {
 
 		Ac.clickBtnRefreshDevice();
-		clickIconAddAlert();
+		alertPage.clickIconAddAlert();
 
 	}
 
 	@Then("^Will open a alert Modal$")
 	public void will_open_a_alert_Modal() {
 
-		assertTrue(validateFrameAddAlert.isDisplayed());
+		assertTrue(alertPage.validateFrameAddAlert.isDisplayed());
 	}
 
 	// ---------- Validate Set Time on AddAlert Modal ---------------
 
 	@When("^Click on the Set Time$")
 	public void click_on_the_Set_Time() {
-		clickBtnSetTime();
+		alertPage.clickBtnSetTime();
 	}
 
 	@And("^Select the hour and minute$")
 	public void select_the_hour_and_minute() {
-		selectTimeAlertHour();
-		selectTimeAlertMinute();
+		alertPage.selectTimeAlertHour();
+		alertPage.selectTimeAlertMinute();
 
 	}
 
 	@And("^Will click on OK$")
 	public void will_click_on_OK() {
 
-		clickBtnOkSetClock();
+		alertPage.clickBtnOkSetClock();
 	}
 
 	@Then("^Will insert on the Time description$")
 	public void will_insert_on_the_Time_description() {
 
-		validateTimeAlert();
+		alertPage.validateTimeAlert();
 
 	}
 
@@ -87,55 +89,55 @@ public class AlertSteps extends AlertPage {
 
 	@And("^Will click on Cancel$")
 	public void will_click_on_Cancel() {
-		clickBtnCancelSetTime();
+		alertPage.clickBtnCancelSetTime();
 	}
 
 	@Then("^Will not insert on the Time description$")
 	public void will_not_insert_on_the_Time_description() {
 
-		assertEquals(timeAlertDefault, validateTimeAlert.getText());
+		assertEquals(alertPage.getTimeAlertDefault(), alertPage.validateTimeAlert.getText());
 	}
 
 	// ----------------- Update Alert seTime inserted before (The Alert was not Created yet)---------------------------
 
 	@When("^Click again on the Set Time$")
 	public void click_again_on_the_Set_Time() {
-		validateTimeAlert();
-		clickBtnSetTime();
+		alertPage.validateTimeAlert();
+		alertPage.clickBtnSetTime();
 	}
 
 	@And("^update the hour and minute$")
 	public void update_the_hour_and_minute() {
 
-		selectTimeAlertHour();
-		selectTimeAlertMinute();
-		clickBtnOkSetClock();
+		alertPage.selectTimeAlertHour();
+		alertPage.selectTimeAlertMinute();
+		alertPage.clickBtnOkSetClock();
 	}
 
 	@Then("^Will update on the Time description$")
 	public void will_update_on_the_Time_description() {
 
-		assertNotEquals(timeAlert, validateTimeAlert.getText());
+		assertNotEquals(alertPage.getTimeAlert(), alertPage.validateTimeAlert.getText());
 	}
 
 	// ------------- Validate Set Duration item ------------------
 
 	@When("^Click on the Set Duration$")
 	public void click_on_the_Set_Duration() {
-		clickBtnSetDuration();
+		alertPage.clickBtnSetDuration();
 	}
 
 	@And("^Select the hour and minute of Duration$")
 	public void select_the_hour_and_minute_of_duration() {
-		selectDurationAlertHour();
-		selectDurationAlertMinute();
+		alertPage.selectDurationAlertHour();
+		alertPage.selectDurationAlertMinute();
 
 	}
 
 	@Then("^Will insert on the Duration description$")
 	public void will_insert_on_the_Duration_description() {
 
-		validateDurationAlert();
+		alertPage.validateDurationAlert();
 	}
 
 	// ----------------- Validate Cancel try to SetDuration of Alert --------------
@@ -143,30 +145,30 @@ public class AlertSteps extends AlertPage {
 	@Then("^Will not insert on the Duration description$")
 	public void will_not_insert_on_the_Duration_description() {
 	
-		assertEquals(durationAlertDefault, validateDurationAlert.getText());
+		assertEquals(alertPage.getSurationAlerDefault(), alertPage.validateDurationAlert.getText());
 	}
 
 	// ----------------- Update Alert Duration inserted before (The Alert was not Created yet) ---------------------------
 	
 	@When("^Click again on the Set Duration$")
 	public void click_again_on_the_Set_Duration() {
-	    validateDurationAlert();
-	    clickBtnSetDuration();
+		alertPage.validateDurationAlert();
+		alertPage.clickBtnSetDuration();
 	}
 
 	@And("^update the hour and minute of Duration$")
 	public void update_the_hour_and_minute_of_Duration() {
 	    
-		selectDurationAlertHour();
-		selectDurationAlertMinute();
-		clickBtnOkSetClock();
+		alertPage.selectDurationAlertHour();
+		alertPage.selectDurationAlertMinute();
+		alertPage.clickBtnOkSetClock();
 		
 	}
 
 	@Then("^Will update on the Duration description$")
 	public void will_update_on_the_Duration_description() {
 	    
-		assertEquals(durationAlert, validateDurationAlert.getText());
+		alertPage.validateDurationAlert();
 	}
 
 	
@@ -174,7 +176,7 @@ public class AlertSteps extends AlertPage {
 	
 	@When("^I select any Weekday$")
 	public void i_select_any_Weekday() throws Throwable {
-	    clickCheckWeekDays();
+		alertPage.clickCheckWeekDays();
 	}
 
 	@Then("^Will be selected on the alert$")
@@ -187,18 +189,18 @@ public class AlertSteps extends AlertPage {
 	@And("^Will click on Save$")
 	public void will_click_on_save() {
 
-		clickBtnSaveAlert();
+		alertPage.clickBtnSaveAlert();
 	}
 	
 	@Then("^Will not create alert$")
 	public void will_not_create_alert(){
 	    
-		assertTrue(validateFrameAddAlert.isDisplayed());
+		assertTrue(alertPage.validateFrameAddAlert.isDisplayed());
 	}
 
 	@Then("^Will show the Weekday message$")
 	public void will_show_the_weekday_message() {
-	    assertEquals("Por favor selecione os dias da semana", validateMessageSnackBar.getText());
+	    assertEquals("Por favor selecione os dias da semana", alertPage.validateMessageSnackBar.getText());
 	}
 	
 	
@@ -206,7 +208,7 @@ public class AlertSteps extends AlertPage {
 	
 	@Then("^Will show the Duration message$")
 	public void will_show_the_duration_message() {
-	    assertEquals("Por favor defina uma duração", validateMessageSnackBar.getText());
+	    assertEquals("Por favor defina uma duração", alertPage.validateMessageSnackBar.getText());
 	}
 	
 	
@@ -215,7 +217,7 @@ public class AlertSteps extends AlertPage {
 	@Then("^Will create alert sucessfuly$")
 	public void will_create_alert_sucessfuly() {
 		
-		validateAlertCreated();
+		alertPage.validateAlertCreated();
 	}
 	
 }

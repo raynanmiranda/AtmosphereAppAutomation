@@ -8,7 +8,8 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 				 features = "src/test/java/features/AlertPage.feature", 
-				     glue = {"steps","hook"}
+				     glue = {"steps","hook"},
+				     tags = {"@SaveAlertSuccess"}
 				)
 
 public class ExecutionAlertTest {

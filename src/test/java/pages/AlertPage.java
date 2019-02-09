@@ -65,14 +65,19 @@ public class AlertPage extends PageBase {
 	@AndroidFindBy(id = "android:id/button1")
 	public MobileElement btnSaveAlert;
 	
-	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/title_text_view")
-	public MobileElement validateAlertCreated;
+	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/mainListView")
+	public List<MobileElement> validateAlertCreated;
 	
 	
 
 	public void clickIconAddAlert() {
 
 		iconAddAlert.click();
+	}
+	
+	public String getTimeAlertDefault() {
+		
+		return timeAlertDefault;
 	}
 
 	public void clickBtnSetTime() {
@@ -94,7 +99,7 @@ public class AlertPage extends PageBase {
 		sizeWeek = checkWeekDays.size();
 		weekRandom = number.nextInt(sizeWeek);
 		checkWeekDays.get(weekRandom).click();
-		//weekDayName = checkWeekDays.get(weekRandom).getText();
+		weekDayName = checkWeekDays.get(weekRandom).getText();
 		
 	}
 
@@ -162,12 +167,25 @@ public class AlertPage extends PageBase {
 		timeAlert = getHourTime + ":" + getMinuteTime;
 		assertEquals(timeAlert, validateTimeAlert.getText());
 	}
+	
+	public String getTimeAlert() {
+		
+		return timeAlert;
+	}
 
 	public void validateDurationAlert() {
 
 		durationAlert = getHourDuration + ":" + getMinuteDuration;
 		assertEquals(durationAlert, validateDurationAlert.getText());
 
+	}
+	
+	public String getSurationAlerDefault() {
+		return durationAlertDefault;
+	}
+	
+	public String getDurationAlert() {
+		return durationAlert;
 	}
 	
 	public void validateCheckWeekDay() {
@@ -187,7 +205,7 @@ public class AlertPage extends PageBase {
 		durationAlert = getHourDuration + ":" + getMinuteDuration;
 		resultAlert = validateAlertCreated.getText();
 		translateWeekDay();
-		ExpectedResultAlert = ("1 - "+ timeAlert+" - "+ durationAlert +" - "+ weekDayName);
+		ExpectedResultAlert = ( timeAlert+" - "+ durationAlert +" - "+ weekDayName);
 		System.out.println(ExpectedResultAlert);
 		
 		assertEquals(ExpectedResultAlert, resultAlert);

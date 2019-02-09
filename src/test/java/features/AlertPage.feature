@@ -57,6 +57,7 @@ And  Select the hour and minute of Duration
 And  Will click on Cancel
 Then Will not insert on the Duration description
 
+@UpdateDurationOnAlert
 Scenario: Update Duration on the Alert Modal
 
 And  I click on the icon on the botton
@@ -95,7 +96,8 @@ And  Will click on Save
 Then Will not create alert
 And  Will show the Duration message
 
-Scenario: Salve alert sucessfuly
+@SaveAlertSuccess
+Scenario: Save alert sucessfuly
 
 And I click on the icon on the botton
 When Click on the Set Time
