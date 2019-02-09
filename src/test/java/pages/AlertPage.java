@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Random;
 
+import org.openqa.selenium.By;
+
 import bases.PageBase;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -66,7 +68,7 @@ public class AlertPage extends PageBase {
 	public MobileElement btnSaveAlert;
 	
 	@AndroidFindBy(id = "br.com.dahmotta.www.atmosphera:id/mainListView")
-	public List<MobileElement> validateAlertCreated;
+	public MobileElement validateAlertCreated;
 	
 	
 
@@ -199,17 +201,50 @@ public class AlertPage extends PageBase {
 
 	public void validateAlertCreated() {
 		
-		String resultAlert,ExpectedResultAlert;
+		String resultAlert = null;
+		String ExpectedResultAlert = null;;
 		
 		timeAlert = getHourTime + ":" + getMinuteTime;
 		durationAlert = getHourDuration + ":" + getMinuteDuration;
-		resultAlert = validateAlertCreated.getText();
 		translateWeekDay();
-		ExpectedResultAlert = ( timeAlert+" - "+ durationAlert +" - "+ weekDayName);
-		System.out.println(ExpectedResultAlert);
 		
-		assertEquals(ExpectedResultAlert, resultAlert);
 		
+		List<MobileElement> ColectAlerts = validateAlertCreated.findElements(By.className("android.widget.TextView"));
+		
+		int i, size;
+		size = ColectAlerts.size();
+		ExpectedResultAlert = (size+" - "+timeAlert+" - "+ durationAlert +" - "+ weekDayName);
+		for (i = 0; i < size; i++) {
+
+			String text = ColectAlerts.get(i).getText();
+
+			if (text.contains(ExpectedResultAlert)) {
+
+				i = size;
+				resultAlert = text;
+				System.out.println(ExpectedResultAlert+" - FOUND -");
+				break;
+				
+			}
+
+			else if (!text.contains(ExpectedResultAlert)) {
+				resultAlert = null;
+				System.out.println(ColectAlerts.get(i).getText());
+			}
+		}
+		
+		
+		
+		
+		try {
+		
+			assertEquals(ExpectedResultAlert, resultAlert);
+		
+		}
+		catch(Exception e) {
+			
+			
+		}
 		
 	}
 	
@@ -218,11 +253,11 @@ public void translateWeekDay() {
 		switch(weekRandom) {
 			
 			case 0:
-				weekDayName = "Seg ";
+				weekDayName = "seg ";
 			break;
 			
 			case 1:
-				weekDayName = "Ter ";
+				weekDayName = "ter ";
 			break;
 
 			case 2:
